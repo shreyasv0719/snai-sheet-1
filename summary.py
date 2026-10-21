@@ -2,17 +2,23 @@ import sys
 from collections import Counter
 
 filename = sys.argv[1]
+position = int(sys.argv[2])
+position = int(sys.argv[2])
 
-with open(filename) as f:lines = f.readlines()
+with open(filename) as f:
+    lines = f.readlines()
 
 print("Total lines:", len(lines))
 
 counts = Counter()
 
-for line in lines:fields = line.split()
+for line in lines:
+    fields = line.split()
 
-if len(fields) > 0:key = fields[0]
-counts[key] += 1
+    if len(fields) > position:
+        key = fields[position]
+        counts[key] += 1
 
 print("Top 5:")
-for item, n in counts.most_common(5):print(item, n)
+for item, n in counts.most_common(position):
+    print(item, n)
